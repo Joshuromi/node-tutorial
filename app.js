@@ -6,10 +6,12 @@ const EventEmitter = require("events");
 const emitter = new EventEmitter();
 
 //register a listener
-emitter.on("messageLogged", () => console.log("Listener called"));
+emitter.on("messageLogged", (eventArg) =>
+  console.log("Listener called", eventArg)
+);
 
 //raise an event
-emitter.emit("messageLogged");
+emitter.emit("messageLogged", { id: 1, url: "http://" });
 
 const pathObj = path.parse(__filename);
 const totalMemory = os.totalmem();
